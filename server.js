@@ -8,7 +8,7 @@ const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const CheckAndAddOffers = require('./services/cartService')
 const store = new MongoDBStore({
-    uri: 'mongodb://localhost:27017/rackspace-basket',
+    uri: 'mongodb://mongo:27017/rackspace-basket',
     collection: 'sessions'
 });
 
