@@ -98,6 +98,12 @@ app.get("/products", async (req, res) => {
     res.json(products);
 });
 
+
+app.get("/emptycart", async (req, res) => {
+    req.session.cart=[];
+    res.send({"message": "Cart Emptied"})
+})  
+
 app.post('/createProducts', function (req, res, next) {
     console.log("REQ BODY: ",req.body)
 

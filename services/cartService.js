@@ -69,13 +69,13 @@ const checkAndAddOffers = (cart) => {
                 if (in_cart[i].product_code === 'AP1') {
                     if (in_cart[i].quantity >= 3) {
 
-                        let om1_exists = null
+                        let om1_exists = false
 
                         for (let j = 0; j < in_cart.length; j++) {
                             console.log("Inside I loop ", j)
                             if (in_cart[j].product_code === 'OM1') {
 
-                                let om1_exists = true;
+                                om1_exists = true;
                                 let oatmeal_quantity = in_cart[j].quantity
                                 if (in_cart[i].quantity > oatmeal_quantity) {
 
@@ -85,9 +85,9 @@ const checkAndAddOffers = (cart) => {
     
 
                         }
-
+                        console.log("OM exists",om1_exists)
                         if(!om1_exists){
-
+                            console.
                             offer_array.push({ ...in_cart[i], offer_code: "APPL", price: -1.50, quantity: in_cart[i].quantity })
 
                         }
