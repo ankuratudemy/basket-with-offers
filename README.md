@@ -58,12 +58,12 @@ You can find more information about the installation on the official Node.js web
 	$ npm install 
 ### Configure app
 Create and Open .env-docker then edit it with your settings. You will need:
-	  ---
-	  MONGO_HOST=mongodb
-	  MONGO_PORT=27017
-	  DATABASE=rackspace-basket
-	  PORT=8080
-	  ---
+		
+		MONGO_HOST=mongodb
+		MONGO_PORT=27017
+		DATABASE=rackspace-basket
+		PORT=8080
+		
 ### Create docker volume to mount a local host directory mapped to /data/db folder insode mongoDB conatiner:
 	$ docker volume create --name basket_mongodb_volume --opt type=none --opt device=<e.g. /f/rackspace-basket/mongoDBData/> --opt o=bind
 
