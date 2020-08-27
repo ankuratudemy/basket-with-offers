@@ -4,8 +4,14 @@
   "description": "RackSpace interview code",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --timeout 10000",
     "start": "node server.js"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-dom": "^1.8.2",
+    "chai-http": "^4.3.0",
+    "mocha": "^2.5.3"
   },
   "author": "Ankur Gupta",
   "license": "ISC",

@@ -1,5 +1,15 @@
 version: "3.0"
 services:
+  test:
+    image: node:12
+    working_dir: /app
+    volumes:
+      - .:/app
+    command:
+      npm run mocha
+    links:
+      - web
+      - mongodb
   web:
     container_name: rackspace-basket
     build: .

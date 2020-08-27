@@ -116,10 +116,10 @@ app.post('/createProducts', function (req, res, next) {
   Product.insertMany(req.body, function (err) {
     if (err) {
       console.log(err)
-      res.send({ "message": "Save unsucesfull" })
+      res.send({ "message": "Save unsucesfull","status":"failed" })
     }
     else {
-      res.send({ "message": "Save sucesfull" })
+      res.send({ "message": "Save sucesfull","status":"success" })
     }
 
   });
@@ -179,17 +179,22 @@ app.get('/addtocart/:product_code', function (req, res, next) {
               ? { ...cartItem, quantity: cartItem.quantity++ }
               : cartItem
           )
-          res.send({ "message": "Product " + restOfItems.name + " Updated in Cart. Udpated Cart is: " + JSON.stringify(req.session.cart) })
+          //res.send({ "message": "Product " + restOfItems.name + " Updated in Cart. ","status": JSON.stringify(req.session.cart) })
+          console.log(JSON.stringify(req.session.cart))
+          res.send({ "message": "Product " + restOfItems.name + " Updated in Cart. ","status": "success1" })
+
         }
 
         else {
           req.session.cart.push({ ...restOfItems, quantity: 1 })
-          res.send({ "message": "Product " + restOfItems.name + " Added to Cart. Updates Cart is: " + JSON.stringify(req.session.cart) })
+          console.log(JSON.stringify(req.session.cart))
+          res.send({ "message": "Product " + restOfItems.name + " Added to Cart. ","status": "success1" })
 
         }
       }
       else {
-        res.send({ "message": "Pelase check the Product Code. Product Code not found in Product list" })
+        console.log(JSON.stringify(req.session.cart))
+        res.send({ "message": "Pelase check the Product Code. Product Code not found in Product list","status":"error1" })
 
       }
 
@@ -265,3 +270,6 @@ app.listen(PORT, function () {
     console.log("MongoDb connected");
   });
 });
+
+
+module.exports = app; // for testing 
