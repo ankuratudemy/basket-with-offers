@@ -17,11 +17,21 @@
 	2. APPL -- If you buy 3 or more bags of Apples, the price drops to $4.50.
 	3. CHMK -- Purchase a box of Chai and get milk free. (Limit 1)
 	4. APOM -- Purchase a bag of Oatmeal and get 50% off a bag of Apples
-## Requirements
+## Dev Requirements
 	For development, you will need Node.js, MongoDB instance (either as docker container or local install), and Docker intalled and a node global package, npm, installed in your environement.
+    make sure you have an instance of mongoDB running either as docker container or on your machine
+	create and add entries for mongoDB and nodejs express port in .env to run code locally by running npm start
+	.env :
+	---
+	  MONGO_HOST=<your mongo db instance host>
+	  MONGO_PORT=27017
+	  DATABASE=rackspace-basket
+	  PORT=8080
+	---
 
-### Node
-#### Node installation on Windows
+
+## Node
+### Node installation on Windows
 	Just go on official Node.js website and download the installer. Also, be sure to have git available in your PATH, npm might need it (You can find git here).
 
 ### Node installation on Ubuntu
@@ -30,7 +40,7 @@
 	$ sudo apt install nodejs
 	$ sudo apt install npm
 ### Other Operating Systems
-	You can find more information about the installation on the official Node.js website and the official NPM website.
+You can find more information about the installation on the official Node.js website and the official NPM website.
 
 	If the installation was successful, you should be able to run the following command.
 
@@ -47,14 +57,14 @@
 	$ cd basket-with-offers
 	$ npm install 
 ### Configure app
-	Create and Open .env-docker then edit it with your settings. You will need:
+Create and Open .env-docker then edit it with your settings. You will need:
 	  ---
 	  MONGO_HOST=mongodb
 	  MONGO_PORT=27017
 	  DATABASE=rackspace-basket
 	  PORT=8080
 	  ---
-### Create docker volume to mount a local host directory mapped to /db/data folder insode mongoDB conatiner:
+### Create docker volume to mount a local host directory mapped to /data/db folder insode mongoDB conatiner:
 	$ docker volume create --name basket_mongodb_volume --opt type=none --opt device=<e.g. /f/rackspace-basket/mongoDBData/> --opt o=bind
 
 	output:
@@ -90,7 +100,7 @@
 		  docker-compose up
 		  ---
 
-	Above commands will build and bring up rackspace-basket & mongoDb container
+Above commands will build and bring up rackspace-basket & mongoDb container
 ### Verify Services:
 	Open browser and hit  http://localhost:8080/cart. You should see an empty cart
 ![cart](https://user-images.githubusercontent.com/65302849/91467054-a85ee900-e8ad-11ea-92f5-fa82b586af2b.JPG)
