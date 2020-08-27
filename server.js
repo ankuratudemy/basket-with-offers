@@ -126,6 +126,26 @@ app.post('/createProducts', function (req, res, next) {
 
 });
 
+
+// POST API endpoint to add Product list by uploading JSON data 
+// This data will be stored in MongoDb 
+app.get('/deleteProducts', function (req, res, next) {
+  
+  Product.collection.drop(function(err) {
+
+  if (err) {
+      console.log(err)
+      res.send({ "message": "Drop unsucesfull with error: "+err.message })
+    }
+    else {
+      res.send({ "message": "Drop sucessfull" })
+    }
+
+  });
+
+
+});
+
 // GET API endpoint to add a product(code) to cart.  
 app.get('/addtocart/:product_code', function (req, res, next) {
 
@@ -179,6 +199,8 @@ app.get('/addtocart/:product_code', function (req, res, next) {
     }
   });
 });
+
+
 
 //GET Endpoint to remove a product ( by code) from cart.
 app.get('/removefromcart/:product_code', function (req, res, next) {
