@@ -1,6 +1,5 @@
 node_modules
 mongoDBData
 mongoDBLogs
-host_folder
 .env
 .env-docker
