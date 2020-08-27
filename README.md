@@ -63,7 +63,7 @@ Create and Open .env-docker then edit it with your settings. You will need:
 		MONGO_PORT=27017
 		DATABASE=rackspace-basket
 		PORT=8080
-		
+
 ### Create docker volume to mount a local host directory mapped to /data/db folder insode mongoDB conatiner:
 	$ docker volume create --name basket_mongodb_volume --opt type=none --opt device=<e.g. /f/rackspace-basket/mongoDBData/> --opt o=bind
 
@@ -94,7 +94,7 @@ Create and Open .env-docker then edit it with your settings. You will need:
 			  - "27017:27017"
 		  volumes:
 			basket_mongodb_volume:
-#### Go to powershell( on windows ) or other git bash shell and run following commands from root project folder:
+#### Start services - Go to powershell( on windows ) or other git bash shell and run following commands from root project folder:
 		  ---
 		  docker-compose build 
 		  docker-compose up
