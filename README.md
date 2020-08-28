@@ -127,7 +127,7 @@ Create and Open .env-docker then edit it with your settings. You will need:
 ## APIs ( How to use )
 ### POST /createProducts
 ```diff
-- You must upload products data first once the services are up.
+- **You must upload products data first once the services are up**.
 ```
 	
 	 Run below mentioned curl command to upload products.json (find it in host_folder) data using below curl command
