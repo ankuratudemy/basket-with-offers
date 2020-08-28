@@ -115,8 +115,9 @@ Create and Open .env-docker then edit it with your settings. You will need:
 Above commands will build and bring up rackspace-basket & mongoDb container
 
 ## Mocha Chai Functional testing 
- Docker compose will bring up mongodb container --> rackspace-basket --> test container which will perform functional testing as per test defined in test/test.js  
- 
+ Docker compose will bring up mongodb container --> rackspace-basket --> test container which will perform functional testing as per test defined in test/test.js 
+ Test conatiner will exit once tests are performed with exit code '0' for success. else exit code will be '1' 
+
  ![test_conatiner](https://user-images.githubusercontent.com/65302849/91607753-0f55ce00-e992-11ea-92d6-636e8a46db82.JPG)
 
 
