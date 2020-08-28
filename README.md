@@ -113,6 +113,13 @@ Create and Open .env-docker then edit it with your settings. You will need:
 		  ---
 
 Above commands will build and bring up rackspace-basket & mongoDb container
+
+## Mocha Chai Functional testing 
+ Docker compose will bring up mongodb container --> rackspace-basket --> test container which will perform functional testing as per test defined in test/test.js  
+ 
+ ![test_conatiner](https://user-images.githubusercontent.com/65302849/91607753-0f55ce00-e992-11ea-92d6-636e8a46db82.JPG)
+
+
 ### Verify Services:
 	Open browser and hit  http://localhost:8080/cart. You should see an empty cart
 ![cart](https://user-images.githubusercontent.com/65302849/91467054-a85ee900-e8ad-11ea-92f5-fa82b586af2b.JPG)
