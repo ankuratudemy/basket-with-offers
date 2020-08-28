@@ -128,7 +128,9 @@ Above commands will build and bring up rackspace-basket & mongoDb container
 
 ## APIs ( How to use )
 ### POST /createProducts
-	You must upload products data first once the services are up. Run below mentioned curl command to upload products.json (find it in host_folder) data using below curl command
+- You must upload products data first once the services are up.
+	
+	 Run below mentioned curl command to upload products.json (find it in host_folder) data using below curl command
 
 		$ curl -v -H "Content-Type: application/json" -X POST -d @host_folder/products.json  http://localhost:8080/createProducts
 
