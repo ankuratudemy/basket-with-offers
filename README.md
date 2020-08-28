@@ -53,11 +53,9 @@ You can find more information about the installation on the official Node.js web
 		6.14.4
 ## Running with docker-compose
 ### Clone git repository to local machine
-```bash
 	$ git clone https://github.com/ankuratudemy/basket-with-offers
 	$ cd basket-with-offers
 	$ npm install 
-```
 ### Configure app
 Create and Open .env-docker then edit it with your settings. You will need:
 		
@@ -67,15 +65,13 @@ Create and Open .env-docker then edit it with your settings. You will need:
 		PORT=8080
 
 ### Create docker volume to mount a local host directory mapped to /data/db folder insode mongoDB conatiner:
-```bash
 	$ docker volume create --name basket_mongodb_volume --opt type=none --opt device=<e.g. /f/rackspace-basket/mongoDBData/> --opt o=bind
-```
 
 	output:
 	basket_mongodb_volume
 	
 #### Update docker-compose.yml with volume name you just created. This will allow to persist mongoDB data even when you delee and rerun mongoDB container
-```yaml
+
 	    version: "3.0"
 		services:
 		  test:
@@ -110,7 +106,7 @@ Create and Open .env-docker then edit it with your settings. You will need:
 		    - "27017:27017"
 		volumes:
 		  basket_mongodb_volume:
-```
+
 
 #### Start services - Go to powershell( on windows ) or other git bash shell and run following commands from root project folder:
 		  ---
