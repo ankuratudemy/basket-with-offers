@@ -10,7 +10,7 @@ const checkAndAddOffers = (cart) => {
         //check For BOGO offer code
 
         for (let i = 0; i < in_cart.length; i++) {
-            console.log("Inside I loop ", i)
+            console.log("Inside BOGO loop ", i)
             if (in_cart[i].product_code === 'CF1') {
 
                 offer_array.push({ ...in_cart[i], offer_code: "BOGO", price: 0, quantity: in_cart[i].quantity })
@@ -19,11 +19,11 @@ const checkAndAddOffers = (cart) => {
 
         //check for CHMK offer code
         for (let i = 0; i < in_cart.length; i++) {
-            console.log("Inside I loop ", i)
+            console.log("Inside CHMK loop ", i)
             if (in_cart[i].product_code === 'CH1') {
                 if (in_cart[i].quantity >= 1) {
                     for (let j = 0; j < in_cart.length; j++) {
-                        console.log("Inside I loop ", j)
+                        //console.log("Inside I loop ", j)
                         if (in_cart[j].product_code === 'MK1') {
                             offer_array.push({ product_code: "MK1", name: "Milk", offer_code: "CHMK", price: -4.75, quantity: 1 })
                         }
@@ -35,7 +35,7 @@ const checkAndAddOffers = (cart) => {
 
         //check for APOM offer code
         for (let i = 0; i < in_cart.length; i++) {
-            console.log("Inside I loop ", i)
+            console.log("Inside APOM loop ", i)
             if (in_cart[i].product_code === 'OM1') {
                 for (let j = 0; j < in_cart.length; j++) {
                     if (in_cart[j].product_code === 'AP1') {
@@ -62,14 +62,14 @@ const checkAndAddOffers = (cart) => {
         //check for APPL offer code
 
         for (let i = 0; i < in_cart.length; i++) {
-            console.log("Inside I loop ", i)
+            console.log("Inside APPL loop ", i)
             if (in_cart[i].product_code === 'AP1') {
                 if (in_cart[i].quantity >= 3) {
 
                     let om1_exists = false
 
                     for (let j = 0; j < in_cart.length; j++) {
-                        console.log("Inside I loop ", j)
+                        //console.log("Inside I loop ", j)
                         if (in_cart[j].product_code === 'OM1') {
 
                             om1_exists = true;
@@ -91,7 +91,7 @@ const checkAndAddOffers = (cart) => {
                 }
             }
         }
-        console.log("Offer_ARY is:", offer_array)
+        //console.log("Offer_ARY is:", offer_array)
         return offer_array
 
 

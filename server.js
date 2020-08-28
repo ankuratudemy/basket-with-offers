@@ -87,7 +87,7 @@ app.get('/cart', function (req, res, next) {
     let total = init_total + offer_total;
     console.log(offer_total)
     res.write('<p>....................................................................................</p>')
-    res.write('<span>     Total &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp $' + parseFloat(total) + '</span>')
+    res.write('<span>     Total &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp $' + parseFloat(total).toFixed(2) + '</span>')
     res.write('<p>....................................................................................</p>')
 
     res.end()
@@ -166,7 +166,7 @@ app.get('/addtocart/:product_code', function (req, res, next) {
       if (docs) {
 
         var { _id, __v, ...restOfItems } = docs._doc;
-        console.log("Result : ", restOfItems);
+        //console.log("Result : ", restOfItems);
 
         const existingCartItem = req.session.cart.find(
           cartItem => cartItem.product_code === productcode
