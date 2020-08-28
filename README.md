@@ -71,33 +71,45 @@ Create and Open .env-docker then edit it with your settings. You will need:
 	basket_mongodb_volume
 	
 #### Update docker-compose.yml with volume name you just created. This will allow to persist mongoDB data even when you delee and rerun mongoDB container
-		  version: "3.0"
-		  services:
-			web:
-			  container_name: rackspace-basket
-			  build: .
-			  ports:
-			  - "8080:8080"
-			  env_file: .env-docker
-			  volumes:
-			  - ./host_folder/:/apps
-			  depends_on:
-			  - mongodb
-			  links:
-			  - mongodb
-			mongodb:
-			  container_name: mongodb
-			  image: mongo
-			  volumes:
-			  - basket_mongodb_volume:/data/db/
-			  ports:
-			  - "27017:27017"
-		  volumes:
-			basket_mongodb_volume:
+	        version: "3.0"
+		services:
+		  test:
+		    image: rackspace-basket
+		    command:
+		      dockerize
+			-wait tcp://mongodb:27017 -wait tcp://web:8080 -timeout 10s
+			bash -c "npm test"
+		    env_file: .env-docker
+		    links:
+		      - web
+		      - mongodb
+		  web:
+		    container_name: rackspace-basket
+		    image: rackspace-basket
+		    build: .
+		    ports:
+		    - "8080:8080"
+		    env_file: .env-docker
+		    volumes:
+		    - ./host_folder/:/apps
+		    depends_on:
+		    - mongodb
+		    links:
+		    - mongodb
+		  mongodb:
+		    container_name: mongodb
+		    image: mongo
+		    volumes:
+		    - basket_mongodb_volume:/data/db/
+		    ports:
+		    - "27017:27017"
+		volumes:
+		  basket_mongodb_volume:
+
+
 #### Start services - Go to powershell( on windows ) or other git bash shell and run following commands from root project folder:
 		  ---
-		  docker-compose build 
-		  docker-compose up
+		docker-compose up --build
 		  ---
 
 Above commands will build and bring up rackspace-basket & mongoDb container
@@ -112,8 +124,15 @@ Above commands will build and bring up rackspace-basket & mongoDb container
 
 		$ curl -v -H "Content-Type: application/json" -X POST -d @host_folder/products.json  http://localhost:8080/createProducts
 
-		  Response: success: {"message":"Save sucesfull"}
-					failure: {"message":"Save unsucesfull"}
+		  Response: success: {"message":"Save sucesfull","status":"success"}
+			    failure: {"message":"Save unsucesfull","status":"failed"}
+### GET /deleteProducts
+    Open browser and hit : http://localhost:8080/deleteProducts
+	This will delete products collection(data) from mongoDB
+		   Response: sucess: {"message":"Drop sucesfull"}
+		             failure: {"message":"Drop unsucesfull with error: ns not found"}
+
+
 ### GET /products
 		You can verify products upload is successfull by running going to http://localhost:8080/products in browser
 		You will get a response with products data in json

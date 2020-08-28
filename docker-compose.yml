@@ -1,17 +1,18 @@
 version: "3.0"
 services:
   test:
-    image: node:12
-    working_dir: /app
-    volumes:
-      - .:/app
+    image: rackspace-basket
     command:
-      npm run mocha
+      dockerize
+        -wait tcp://mongodb:27017 -wait tcp://web:8080 -timeout 10s
+        bash -c "npm test"
+    env_file: .env-docker
     links:
       - web
       - mongodb
   web:
     container_name: rackspace-basket
+    image: rackspace-basket
     build: .
     ports:
     - "8080:8080"
